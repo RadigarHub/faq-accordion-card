@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: 0;
   min-width: 100vw;
   min-height: 100vh;
@@ -14,11 +15,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 87%;
   max-width: 919px;
-  margin: 0 24px;
   background-color: white;
   border-radius: 25px;
   box-shadow: 0px 50px 60px -20px #6041b9; }
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row;
+      min-height: 509px; } }
 
 .illustration {
   display: flex;
@@ -27,16 +32,43 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   margin-top: -48px; }
+  @media (min-width: 768px) {
+    .illustration {
+      display: block;
+      width: 58%;
+      background-image: url("./images/illustration-woman-online-desktop.svg"), url("./images/bg-pattern-desktop.svg");
+      background-position: -80px 68px, -570px -295px;
+      margin-top: 0; } }
 
-.illustration img {
+.illustration img[alt="illustration-mobile"] {
   display: block;
   position: relative;
   top: -60px;
   left: -14px; }
+  @media (min-width: 768px) {
+    .illustration img[alt="illustration-mobile"] {
+      display: none; } }
+
+.illustration img[alt="illustration-box"] {
+  display: none; }
+  @media (min-width: 768px) {
+    .illustration img[alt="illustration-box"] {
+      display: block;
+      position: relative;
+      top: 205px;
+      left: -93px; } }
 
 .faq {
   margin-top: -15px;
   padding: 0 24px; }
+  @media (min-width: 768px) {
+    .faq {
+      width: 42%;
+      margin: 0;
+      margin: auto 0; } }
+  @media (min-width: 940px) {
+    .faq {
+      padding-right: 100px; } }
 
 h1 {
   font-size: 2.7em;
@@ -45,6 +77,11 @@ h1 {
   color: #1d1e35;
   margin-top: 0;
   margin-bottom: 10px; }
+  @media (min-width: 768px) {
+    h1 {
+      text-align: left;
+      margin-top: 15px;
+      margin-bottom: 15px; } }
 
 .questions {
   margin-top: 0;
@@ -56,7 +93,18 @@ h1 {
   padding: 20px 0;
   border-bottom: 1px solid #e7e7e9;
   font-size: 1.1em;
-  color: #4a4b5e; }
+  color: #4a4b5e;
+  cursor: pointer; }
+  .question:hover {
+    color: #f47c57; }
+  @media (min-width: 768px) {
+    .question {
+      font-size: 1.2em; } }
+
+.question.selected {
+  padding-bottom: 10px;
+  border-bottom: none;
+  font-weight: 700; }
 
 .question p {
   margin: 0; }
@@ -70,13 +118,24 @@ h1 {
   background-position: center;
   margin-left: 15px; }
 
+.question.selected .icon {
+  transform: scaleY(-1); }
+
 .answer {
   margin-inline-start: 0;
   color: #787887;
-  width: 0;
+  line-height: 17px;
   height: 0;
   visibility: hidden;
-  opacity: 0; }
+  opacity: 0;
+  transition: opacity 1s linear; }
+
+.answer.selected {
+  height: auto;
+  visibility: visible;
+  opacity: 1;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e7e7e9; }
 
 .attribution {
   width: 100%;
